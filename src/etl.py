@@ -119,14 +119,14 @@ def load(dataframe):
                 if_exists='append',
                 index=False, #Avoid index as new column
             )
-        return read_sql()
+        return etl_parquet()
     except Exception as e:
         logging.error(
             f"loading ERROR occurred in {__name__} : type of error {e}"
         )
         return e
 
-def read_sql():
+def etl_parquet():
     try:
         #read data from database
         dataframe = pd.read_sql('select * from books',con=engine)
@@ -145,7 +145,7 @@ def read_sql():
             f"new parquet file generated with the extracted data from database"
         )
 
-        return None
+        return dataframe
     except Exception as e:
         logging.error(
             f"Database ERROR occurred in {__name__} : type of the error {e}"

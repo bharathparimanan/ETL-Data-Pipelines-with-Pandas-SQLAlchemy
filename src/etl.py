@@ -91,7 +91,33 @@ def load(dataframe):
         else:
             #Table not exist then create a new tabel
             logging.info("create a new table books")
+            #Create new table
+            metadata = MetaData()
+            books_table = Table(
+                'books',
+                metadata,
+                Column('bookID', Integer, primary_key=True),
+                Column('title', String),
+                Column('authors', String),
+                Column('average_rating', Float),
+                Column('isbn', String),
+                Column('isbn13', String),
+                Column('language_code', String),
+                Column('num_pages', Integer),
+                Column('ratings_count', Integer),
+                Column('text_reviews_count', Integer),
+                Column('publication_date', Date),
+                Column('publisher', String)
+            )
+            metadata.create_all(engine)
 
+            #Load data from dataframe
+            dataframe.to_sql(
+                name="books", #Table name
+                con=engine, #Database connection engine
+                if_exists='append',
+                index=False, #Avoid index as new column
+            )
         return None
     except Exception as e:
         logging.error(

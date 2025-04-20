@@ -1,6 +1,7 @@
 import os
 import logging
 import pandas as pd
+from sqlalchemy import inspect
 
 from .config.dbconfig import engine
 
@@ -73,6 +74,15 @@ def transform(dataframe):
 def load(dataframe):
     try:
         logging.info(f"Load dataframe to SQL")
+
+        #Inspect if the table exist
+        Inspector = inspect(engine)
+        if 'books' in Inspector.get_table_names():
+            print(f"books table present in {Inspector.get_table_names()}")
+        else:
+            #Table not exist then create a new tabel
+            print("need to create a new table")
+
         return None
     except Exception as e:
         logging.error(

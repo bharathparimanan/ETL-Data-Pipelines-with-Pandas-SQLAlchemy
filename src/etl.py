@@ -136,6 +136,15 @@ def read_sql():
             f"\nDataframe shape : {dataframe.shape}"
             f"\nDataframe column datatypes : {dataframe.dtypes}"
         )
+
+        #Create a parquet file with dataframe
+        filepath = os.path.join(dirpath,'processed/books.parquet')
+        dataframe.to_parquet(filepath, engine='pyarrow')
+
+        logging.info(
+            f"new parquet file generated with the extracted data from database"
+        )
+
         return None
     except Exception as e:
         logging.error(

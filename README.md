@@ -120,5 +120,4 @@ Contributions to this repository are welcome. If you find any issues or have sug
 This project is licensed under the [MIT License](LICENSE). See the `LICENSE` file for more details.
 
 ## Contact
-Bharath Parimanan
 linkedin.com/in/bharath-parimanan-940698207

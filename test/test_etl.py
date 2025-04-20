@@ -1,14 +1,19 @@
+import os.path
+import sys
 import logging
 import pytest
 import pandas as pd
 
-from src.etl import etl_parquet
+#Add project path to python root path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),'..')))
+
+from src.etl import etl_parquet, extract
 
 
 def test_sql_data():
     try:
         result = etl_parquet()
-        print(result.head(3))
+        assert isinstance(result, pd.DataFrame)
         return None
     except Exception as e:
         logging.error(

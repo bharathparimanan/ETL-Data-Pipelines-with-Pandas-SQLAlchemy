@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 
 # Database config
 username = "postgres"
-password = "****"
+password = "8055"
 host = "localhost"
 port = "5432"
 database = "dataground"

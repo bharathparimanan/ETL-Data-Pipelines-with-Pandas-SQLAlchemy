@@ -118,9 +118,18 @@ def load(dataframe):
                 if_exists='append',
                 index=False, #Avoid index as new column
             )
-        return None
+        return read_sql()
     except Exception as e:
         logging.error(
             f"loading ERROR occurred in {__name__} : type of error {e}"
+        )
+        return e
+
+def read_sql():
+    try:
+        return None
+    except Exception as e:
+        logging.error(
+            f"Database ERROR occurred in {__name__} : type of the error {e}"
         )
         return e

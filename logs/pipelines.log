@@ -1,0 +1,75 @@
+2025-04-20 21:46:48,959 - INFO - Check Database Connection : <sqlalchemy.engine.base.Connection object at 0x102913ee0> : Connected Successfully
+2025-04-20 21:46:48,959 - INFO - Pipeline Initiated!
+2025-04-20 21:46:48,959 - INFO - extract from .csv files initiated!
+2025-04-20 21:46:48,984 - INFO - Shape of the Dataset/DataFrame (11123, 12)
+2025-04-20 21:46:48,984 - INFO - Columns of the Dataset/DataFrame Index(['bookID', 'title', 'authors', 'average_rating', 'isbn', 'isbn13',
+       'language_code', '  num_pages', 'ratings_count', 'text_reviews_count',
+       'publication_date', 'publisher'],
+      dtype='object')
+2025-04-20 21:46:48,984 - INFO - transform dataframe initiated!
+2025-04-20 21:46:48,991 - INFO - Pipeline checkpoint for extracted dataframe 
+Before transformation:    bookID                                              title                     authors  ...  text_reviews_count publication_date        publisher
+0       1  Harry Potter and the Half-Blood Prince (Harry ...  J.K. Rowling/Mary GrandPré  ...               27591        9/16/2006  Scholastic Inc.
+1       2  Harry Potter and the Order of the Phoenix (Har...  J.K. Rowling/Mary GrandPré  ...               29221         9/1/2004  Scholastic Inc.
+2       4  Harry Potter and the Chamber of Secrets (Harry...                J.K. Rowling  ...                 244        11/1/2003       Scholastic
+
+[3 rows x 12 columns]
+2025-04-20 21:46:48,992 - INFO - Datatypes of the Dataframe properties
+Before transformation : bookID                  int64
+title                  object
+authors                object
+average_rating        float64
+isbn                   object
+isbn13                  int64
+language_code          object
+  num_pages             int64
+ratings_count           int64
+text_reviews_count      int64
+publication_date       object
+publisher              object
+dtype: object
+2025-04-20 21:46:49,013 - INFO - Pipeline check point transformed data
+After transformation :    bookID                                              title                     authors  ...  text_reviews_count publication_date        publisher
+0       1  Harry Potter and the Half-Blood Prince (Harry ...  J.K. Rowling/Mary GrandPré  ...               27591       2006-09-16  Scholastic Inc.
+1       2  Harry Potter and the Order of the Phoenix (Har...  J.K. Rowling/Mary GrandPré  ...               29221       2004-09-01  Scholastic Inc.
+2       4  Harry Potter and the Chamber of Secrets (Harry...                J.K. Rowling  ...                 244       2003-11-01       Scholastic
+
+[3 rows x 12 columns]
+2025-04-20 21:46:49,013 - INFO - Datatypes of the Dataframe properties
+After transformation : bookID                  int64
+title                  object
+authors                object
+average_rating        float64
+isbn                   object
+isbn13                 object
+language_code          object
+num_pages               int64
+ratings_count           int64
+text_reviews_count      int64
+publication_date       object
+publisher              object
+dtype: object
+2025-04-20 21:46:49,013 - INFO - Load dataframe to SQL
+2025-04-20 21:46:49,019 - INFO - books table present in ['books']
+2025-04-20 21:46:49,479 - INFO - Pipline checkpoints data reed from database    bookID                                              title                     authors  ...  text_reviews_count publication_date        publisher
+0       1  Harry Potter and the Half-Blood Prince (Harry ...  J.K. Rowling/Mary GrandPré  ...               27591       2006-09-16  Scholastic Inc.
+1       2  Harry Potter and the Order of the Phoenix (Har...  J.K. Rowling/Mary GrandPré  ...               29221       2004-09-01  Scholastic Inc.
+2       4  Harry Potter and the Chamber of Secrets (Harry...                J.K. Rowling  ...                 244       2003-11-01       Scholastic
+
+[3 rows x 12 columns]
+Dataframe shape : (11123, 12)
+Dataframe column datatypes : bookID                  int64
+title                  object
+authors                object
+average_rating        float64
+isbn                   object
+isbn13                 object
+language_code          object
+num_pages               int64
+ratings_count           int64
+text_reviews_count      int64
+publication_date       object
+publisher              object
+dtype: object
+2025-04-20 21:46:49,523 - INFO - new parquet file generated with the extracted data from database
+2025-04-20 21:46:49,523 - INFO - Pipeline ended!

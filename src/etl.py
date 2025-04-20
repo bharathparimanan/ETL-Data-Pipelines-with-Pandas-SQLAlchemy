@@ -7,6 +7,9 @@ from sqlalchemy import inspect, MetaData, Table, Column, Integer, String, Date, 
 
 from .config.dbconfig import engine
 
+dirpath = os.path.abspath(
+            os.path.join(os.path.dirname(__file__),"../data"))
+
 def extract():
     """
     extract data from the .csv file and pass to transform function with extracted dataframe
@@ -14,9 +17,7 @@ def extract():
     """
     try:
         logging.info(f"extract from .csv files initiated!")
-
-        filepath = os.path.abspath(
-            os.path.join(os.path.dirname(__file__),"../data/raw/books.csv"))
+        filepath = os.path.join(dirpath, 'raw/books.csv')
         #Except bad lines -- create error while extraction
         df = pd.read_csv(filepath,delimiter=',',on_bad_lines='skip')
 
@@ -127,6 +128,14 @@ def load(dataframe):
 
 def read_sql():
     try:
+        #read data from database
+        dataframe = pd.read_sql('select * from books',con=engine)
+
+        logging.info(
+            f"Pipline checkpoints data reed from database {dataframe.head(3)}"
+            f"\nDataframe shape : {dataframe.shape}"
+            f"\nDataframe column datatypes : {dataframe.dtypes}"
+        )
         return None
     except Exception as e:
         logging.error(

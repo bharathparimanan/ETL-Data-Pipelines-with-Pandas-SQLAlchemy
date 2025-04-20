@@ -78,7 +78,7 @@ This project aims to streamline data preparation workflows for data scientists, 
     ```bash
     pytest
     ```
-    * This will execute all the test cases defined in `test/test.py` to verify the functionality of the `src/etl.py` module.
+    * This will execute all the test cases defined in `test/test_etl.py` to verify the functionality of the `src/etl.py` module.
 
 ## Project Structure
 

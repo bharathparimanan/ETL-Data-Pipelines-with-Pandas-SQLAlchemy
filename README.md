@@ -25,9 +25,10 @@ This project aims to streamline data preparation workflows for data scientists, 
 ## Technologies Used
 
 * **Python:** The primary programming language.
-* **Pandas:** A powerful library for data manipulation and analysis.
+* **Pandas:** A powerful library for data manipulation and analysis, potentially enhanced with `pyarrow` for performance.
 * **SQLAlchemy:** A Python SQL toolkit and Object-Relational Mapper (ORM) for database interaction.
 * **PostgreSQL:** A robust, open-source relational database system.
+* **Pyarrow:** A library for in-memory analytics and data interchange, which can improve Pandas performance and support additional file formats.
 * **Pytest:** A popular Python testing framework for writing concise and readable tests.
 * **Logging:** Python's built-in module for generating log messages.
 
@@ -47,7 +48,7 @@ This project aims to streamline data preparation workflows for data scientists, 
     venv\Scripts\activate  # On Windows
     pip install -r requirements.txt
     ```
-    *(Ensure `requirements.txt` includes `pandas`, `sqlalchemy`, `psycopg2-binary` (for PostgreSQL), and `pytest`.)*
+    *(Ensure `requirements.txt` includes `pandas`, `sqlalchemy`, `psycopg2-binary` (for PostgreSQL), `pytest`, and `pyarrow`.)*
 
 3.  **Set up PostgreSQL:**
     * Ensure you have PostgreSQL installed and running.

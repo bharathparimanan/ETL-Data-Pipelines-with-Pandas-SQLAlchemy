@@ -1,4 +1,5 @@
 pandas
 psycopg2
+pyarrow
 sqlalchemy
 pytest

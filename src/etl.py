@@ -64,8 +64,18 @@ def transform(dataframe):
         logging.info(f"Datatypes of the Dataframe properties"
                      f"\nAfter transformation : {dataframe.dtypes}")
 
-        return dataframe
+        return load(dataframe)
     except Exception as e:
         logging.error(
             f"transformation ERROR occurred in {__name__} : type of error {e}")
+        return e
+
+def load(dataframe):
+    try:
+        logging.info(f"Load dataframe to SQL")
+        return None
+    except Exception as e:
+        logging.error(
+            f"loading ERROR occurred in {__name__} : type of error {e}"
+        )
         return e

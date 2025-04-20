@@ -1,7 +1,9 @@
 import os
 import logging
+from importlib.metadata import metadata
+
 import pandas as pd
-from sqlalchemy import inspect
+from sqlalchemy import inspect, MetaData, Table, Column, Integer, String, Date, Float
 
 from .config.dbconfig import engine
 
@@ -78,10 +80,17 @@ def load(dataframe):
         #Inspect if the table exist
         Inspector = inspect(engine)
         if 'books' in Inspector.get_table_names():
-            print(f"books table present in {Inspector.get_table_names()}")
+            logging.info(f"books table present in {Inspector.get_table_names()}")
+            #Table exist then replace data
+            dataframe.to_sql(
+                name="books", #Table name
+                con=engine, #Database connection engine
+                if_exists='replace', #Replace with new data
+                index=False #Avoid writing index name as columns
+            )
         else:
             #Table not exist then create a new tabel
-            print("need to create a new table")
+            logging.info("create a new table books")
 
         return None
     except Exception as e:
